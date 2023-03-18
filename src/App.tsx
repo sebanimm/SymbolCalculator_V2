@@ -88,7 +88,8 @@ class SymbolCalculator {
 			requiredMeso += nextLvUpgradeMeso;
 		}
 
-		return maxRequiredMeso - requiredMeso;
+		requiredMeso = maxRequiredMeso - requiredMeso;
+		return requiredMeso;
 	}
 
 	static calculateRequiredCost(options: CalculateRequiredCostOptions) {
