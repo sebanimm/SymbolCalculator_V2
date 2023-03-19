@@ -1,14 +1,14 @@
-import { SymbolPropsType } from "types";
+import { SymbolPropsType } from "interfaces";
 
 const Symbol = ({
 	name,
 	symbolType,
-	defaultMeso,
-	symbolUpMeso,
+	baseCost,
+	additionalCost,
 	setSymbolInfo,
 }: SymbolPropsType) => {
 	const handleChange = () => {
-		setSymbolInfo({ symbolType, defaultMeso, symbolUpMeso });
+		setSymbolInfo({ symbolType, baseCost, additionalCost });
 	};
 
 	return (
