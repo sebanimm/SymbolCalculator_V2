@@ -38,3 +38,9 @@ export interface calculateRequiredSymbolCountOptions {
 	symbolLevel: number;
 	symbolCount: number;
 }
+
+export interface ResultType {
+	requiredCount: number;
+	requiredCostIn100M: number;
+	requiredCostIn10K: number;
+}

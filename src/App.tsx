@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SymbolInfoType, InputValuesType } from "interfaces";
+import { SymbolInfoType, InputValuesType, ResultType } from "interfaces";
 import { DEFAULT, symbolData } from "constants/index";
 import SymbolCalculator from "calculator";
 import Symbol from "components/Symbol";
@@ -14,10 +14,10 @@ const App = () => {
 		symbolLevel: 1,
 		symbolCount: 0,
 	});
-	const [result, setResult] = useState<any>({
-		requiredCount: 0,
-		requiredCostIn100M: 0,
-		requiredCostIn10K: 0,
+	const [result, setResult] = useState<ResultType>({
+		requiredCount: -1,
+		requiredCostIn100M: -1,
+		requiredCostIn10K: -1,
 	});
 	const { symbolLevel, symbolCount } = inputValues;
 	const { symbolType, baseCost, additionalCost } = symbolInfo;
