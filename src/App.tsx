@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SymbolInfoType, InputValuesType, ResultType } from "interfaces";
 import { DEFAULT, symbolData } from "constants/index";
 import SymbolCalculator from "calculator";
@@ -45,6 +45,10 @@ const App = () => {
 		const requiredCostIn10K = Math.floor((requiredCost % 100_000_000) / 10000);
 		setResult({ requiredCount, requiredCostIn100M, requiredCostIn10K });
 	};
+
+	useEffect(() => {
+		handleButtonClick();
+	}, []);
 
 	return (
 		<div>
