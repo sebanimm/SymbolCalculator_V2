@@ -15,10 +15,12 @@ const App = () => {
 		symbolCount: 0,
 	});
 	const [result, setResult] = useState<ResultType>({
-		requiredCount: -1,
-		requiredCostIn100M: -1,
-		requiredCostIn10K: -1,
+		requiredCount: 0,
+		requiredCostIn100M: 0,
+		requiredCostIn10K: 0,
+		isCalculated: false,
 	});
+	const { isCalculated } = result;
 	const { symbolLevel, symbolCount } = inputValues;
 	const { symbolType, baseCost, additionalCost } = symbolInfo;
 
@@ -43,7 +45,12 @@ const App = () => {
 		});
 		const requiredCostIn100M = Math.floor(requiredCost / 100_000_000);
 		const requiredCostIn10K = Math.floor((requiredCost % 100_000_000) / 10000);
-		setResult({ requiredCount, requiredCostIn100M, requiredCostIn10K });
+		setResult({
+			requiredCount,
+			requiredCostIn100M,
+			requiredCostIn10K,
+			isCalculated: true,
+		});
 	};
 
 	useEffect(() => {
@@ -84,12 +91,14 @@ const App = () => {
 			<button onClick={handleButtonClick}>계산하기</button>
 			<br />
 			<br />
-			<div>
-				심볼 {result.requiredCount}개 더 필요함
-				<br />
-				{result.requiredCostIn100M}억{result.requiredCostIn10K}만 메소 더 필요함
-				<br />
-			</div>
+			{isCalculated && (
+				<div>
+					심볼 {result.requiredCount}개 더 필요함
+					<br />
+					{result.requiredCostIn100M}억{result.requiredCostIn10K}만 메소 더 필요함
+					<br />
+				</div>
+			)}
 		</div>
 	);
 };
