@@ -43,5 +43,4 @@ export interface ResultType {
 	requiredCount: number;
 	requiredCostIn100M: number;
 	requiredCostIn10K: number;
-	isCalculated: boolean;
 }

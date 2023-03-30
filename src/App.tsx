@@ -18,11 +18,11 @@ const App = () => {
 		requiredCount: 0,
 		requiredCostIn100M: 0,
 		requiredCostIn10K: 0,
-		isCalculated: false,
 	});
-	const { isCalculated } = result;
-	const { symbolLevel, symbolCount } = inputValues;
+	const [isCalculated, setIsCalculated] = useState<boolean>(false);
+
 	const { symbolType, baseCost, additionalCost } = symbolInfo;
+	const { symbolLevel, symbolCount } = inputValues;
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value, maxLength } = e.target;
@@ -49,13 +49,9 @@ const App = () => {
 			requiredCount,
 			requiredCostIn100M,
 			requiredCostIn10K,
-			isCalculated: true,
 		});
+		setIsCalculated(true);
 	};
-
-	useEffect(() => {
-		handleButtonClick();
-	}, []);
 
 	return (
 		<div>
