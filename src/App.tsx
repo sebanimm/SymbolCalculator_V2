@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { SymbolInfoType, InputValuesType, ResultType } from "interfaces";
 import { DEFAULT, symbolData } from "constants/index";
 import SymbolCalculator from "calculator";
@@ -57,16 +57,7 @@ const App = () => {
 		<div>
 			<div>
 				{symbolData.map((obj, idx) => {
-					return (
-						<Symbol
-							key={idx}
-							name={obj.name}
-							symbolType={obj.symbolType}
-							baseCost={obj.baseCost}
-							additionalCost={obj.additionalCost}
-							setSymbolInfo={setSymbolInfo}
-						/>
-					);
+					return <Symbol key={idx} {...obj} setSymbolInfo={setSymbolInfo} />;
 				})}
 			</div>
 			<input
