@@ -3,6 +3,8 @@ import { SymbolInfoType, InputValuesType, ResultType } from "interfaces";
 import { DEFAULT, symbolData } from "constants/index";
 import SymbolCalculator from "calculator";
 import Symbol from "components/Symbol";
+import Result from "components/Result";
+import Inputs from "components/Inputs";
 
 const App = () => {
 	const [symbolInfo, setSymbolInfo] = useState<SymbolInfoType>({
@@ -50,7 +52,9 @@ const App = () => {
 			requiredCostIn100M,
 			requiredCostIn10K,
 		});
-		setIsCalculated(true);
+		if (requiredCost > 65) {
+			setIsCalculated(true);
+		}
 	};
 
 	return (
@@ -60,32 +64,9 @@ const App = () => {
 					return <Symbol key={idx} {...obj} setSymbolInfo={setSymbolInfo} />;
 				})}
 			</div>
-			<input
-				type="number"
-				name="symbolLevel"
-				maxLength={2}
-				value={symbolLevel}
-				onChange={handleChange}
-			/>
-			<input
-				type="number"
-				name="symbolCount"
-				maxLength={4}
-				value={symbolCount}
-				onChange={handleChange}
-			/>
-			<br />
+			<Inputs {...inputValues} handleChange={handleChange} />
 			<button onClick={handleButtonClick}>계산하기</button>
-			<br />
-			<br />
-			{isCalculated && (
-				<div>
-					심볼 {result.requiredCount}개 더 필요함
-					<br />
-					{result.requiredCostIn100M}억{result.requiredCostIn10K}만 메소 더 필요함
-					<br />
-				</div>
-			)}
+			<Result isCalculated={isCalculated} {...result} />
 		</div>
 	);
 };

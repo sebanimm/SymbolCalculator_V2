@@ -44,3 +44,11 @@ export interface ResultType {
 	requiredCostIn100M: number;
 	requiredCostIn10K: number;
 }
+
+export interface ResultPropsType extends ResultType {
+	isCalculated: boolean;
+}
+
+export interface InputsPropsType extends InputValuesType {
+	handleChange: React.ChangeEventHandler<HTMLInputElement>;
+}
