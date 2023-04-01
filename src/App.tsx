@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SymbolInfoType, InputValuesType, ResultType } from "interfaces";
+import { SymbolInfoType, InputValuesType, ResultType } from "interfaces/others";
 import { DEFAULT, symbolData } from "constants/index";
 import SymbolCalculator from "calculator";
 import Symbol from "components/Symbol";

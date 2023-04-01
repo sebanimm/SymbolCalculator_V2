@@ -1,4 +1,4 @@
-import { SymbolDataType } from "interfaces";
+import { SymbolDataType } from "interfaces/others";
 
 export enum SymbolType {
 	Default = "Default",

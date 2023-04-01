@@ -1,7 +1,7 @@
 import {
 	calculateRequiredCostOptions,
 	calculateRequiredSymbolCountOptions,
-} from "interfaces";
+} from "interfaces/calculator";
 import { ARCANE_SYMBOL } from "constants/index";
 
 class SymbolCalculator {
