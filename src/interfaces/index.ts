@@ -23,7 +23,7 @@ export interface SymbolInfoType {
 }
 
 export interface calculateRequiredCostOptions extends SymbolInfoType {
-	baseCost: number;
+	symbolLevel: number;
 }
 
 export interface calculateRequiredSymbolCountOptions extends InputValuesType {
