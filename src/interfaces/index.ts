@@ -7,11 +7,7 @@ export interface SymbolDataType {
 	additionalCost: number;
 }
 
-export interface SymbolPropsType {
-	name: string;
-	symbolType: SymbolType;
-	baseCost: number;
-	additionalCost: number;
+export interface SymbolPropsType extends SymbolDataType {
 	setSymbolInfo: React.Dispatch<React.SetStateAction<SymbolInfoType>>;
 }
 
@@ -26,17 +22,12 @@ export interface SymbolInfoType {
 	additionalCost: number;
 }
 
-export interface calculateRequiredCostOptions {
-	symbolType: SymbolType;
-	symbolLevel: number;
+export interface calculateRequiredCostOptions extends SymbolInfoType {
 	baseCost: number;
-	additionalCost: number;
 }
 
-export interface calculateRequiredSymbolCountOptions {
+export interface calculateRequiredSymbolCountOptions extends InputValuesType {
 	symbolType: SymbolType;
-	symbolLevel: number;
-	symbolCount: number;
 }
 
 export interface ResultType {
