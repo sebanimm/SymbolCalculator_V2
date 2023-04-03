@@ -15,4 +15,5 @@ export interface SymbolPropsType extends SymbolDataType {
 
 export interface ResultPropsType extends ResultType {
 	isCalculated: boolean;
+	isInRange: boolean;
 }

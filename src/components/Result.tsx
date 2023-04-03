@@ -2,6 +2,7 @@ import { ResultPropsType } from "interfaces/props";
 
 const Result = ({
 	isCalculated,
+	isInRange,
 	requiredCount,
 	requiredCostIn100M,
 	requiredCostIn10K,
@@ -9,7 +10,7 @@ const Result = ({
 	return (
 		<div>
 			{isCalculated &&
-				(requiredCount > 0 ? (
+				(requiredCount > 0 && isInRange === true ? (
 					<div>
 						심볼은 {requiredCount}개가 더 필요합니다.
 						<br />

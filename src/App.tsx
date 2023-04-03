@@ -22,6 +22,7 @@ const App = () => {
 		requiredCostIn10K: 0,
 	});
 	const [isCalculated, setIsCalculated] = useState<boolean>(false);
+	const [isInRange, setIsInRange] = useState<boolean>(false);
 
 	const { symbolType, baseCost, additionalCost } = symbolInfo;
 	const { symbolLevel, symbolCount } = inputValues;
@@ -47,13 +48,21 @@ const App = () => {
 		});
 		const requiredCostIn100M = Math.floor(requiredCost / 100_000_000);
 		const requiredCostIn10K = Math.floor((requiredCost % 100_000_000) / 10000);
+
 		setResult({
 			requiredCount,
 			requiredCostIn100M,
 			requiredCostIn10K,
 		});
+
 		if (requiredCost > 65) {
 			setIsCalculated(true);
+		}
+
+		if (symbolLevel > 0) {
+			setIsInRange(true);
+		} else {
+			setIsInRange(false);
 		}
 	};
 
@@ -66,7 +75,7 @@ const App = () => {
 			</div>
 			<Inputs {...inputValues} handleChange={handleChange} />
 			<button onClick={handleButtonClick}>계산하기</button>
-			<Result isCalculated={isCalculated} {...result} />
+			<Result isCalculated={isCalculated} isInRange={isInRange} {...result} />
 		</div>
 	);
 };
