@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { SymbolInfoType, InputValuesType, ResultType } from "interfaces/others";
-import { DEFAULT, symbolData } from "constants/index";
+import { ARCANE_SYMBOL, DEFAULT, SYMBOL_DATA } from "constants/index";
 import SymbolCalculator from "calculator";
 import Symbol from "components/Symbol";
 import Result from "components/Result";
 import Inputs from "components/Inputs";
 
 const App = () => {
+	const [isCalculated, setIsCalculated] = useState<boolean>(false);
+	const [isInRange, setIsInRange] = useState<boolean>(false);
+	const [index, setIndex] = useState<number>(0);
+	const [weeklyQuest, setWeeklyQuest] = useState<boolean>(false);
 	const [symbolInfo, setSymbolInfo] = useState<SymbolInfoType>({
 		symbolType: DEFAULT,
 		baseCost: 1,
@@ -20,9 +24,8 @@ const App = () => {
 		requiredCount: 0,
 		requiredCostIn100M: 0,
 		requiredCostIn10K: 0,
+		requiredDays: 0,
 	});
-	const [isCalculated, setIsCalculated] = useState<boolean>(false);
-	const [isInRange, setIsInRange] = useState<boolean>(false);
 
 	const { symbolType, baseCost, additionalCost } = symbolInfo;
 	const { symbolLevel, symbolCount } = inputValues;
@@ -32,6 +35,10 @@ const App = () => {
 		const parsedValue = Number(value);
 		if (value.length > maxLength || isNaN(parsedValue)) return;
 		setInputValues({ ...inputValues, [name]: parsedValue });
+	};
+
+	const handleCheckbox = () => {
+		setWeeklyQuest(!weeklyQuest);
 	};
 
 	const handleButtonClick = () => {
@@ -46,6 +53,13 @@ const App = () => {
 			baseCost,
 			additionalCost,
 		});
+		const requiredDays = SymbolCalculator.calculateRequiredDays({
+			index,
+			symbolType,
+			symbolLevel,
+			symbolCount,
+			weeklyQuest,
+		});
 		const requiredCostIn100M = Math.floor(requiredCost / 100_000_000);
 		const requiredCostIn10K = Math.floor((requiredCost % 100_000_000) / 10000);
 
@@ -53,6 +67,7 @@ const App = () => {
 			requiredCount,
 			requiredCostIn100M,
 			requiredCostIn10K,
+			requiredDays,
 		});
 
 		if (requiredCost > 65) {
@@ -69,11 +84,25 @@ const App = () => {
 	return (
 		<div>
 			<div>
-				{symbolData.map((obj, idx) => {
-					return <Symbol key={idx} {...obj} setSymbolInfo={setSymbolInfo} />;
+				{SYMBOL_DATA.map((obj, idx) => {
+					return (
+						<Symbol
+							key={idx}
+							index={idx}
+							{...obj}
+							setIndex={setIndex}
+							setSymbolInfo={setSymbolInfo}
+						/>
+					);
 				})}
 			</div>
 			<Inputs {...inputValues} handleChange={handleChange} />
+			{symbolType === ARCANE_SYMBOL && (
+				<div>
+					주간퀘?
+					<input type="checkbox" onChange={handleCheckbox} />
+				</div>
+			)}
 			<button onClick={handleButtonClick}>계산하기</button>
 			<Result isCalculated={isCalculated} isInRange={isInRange} {...result} />
 		</div>

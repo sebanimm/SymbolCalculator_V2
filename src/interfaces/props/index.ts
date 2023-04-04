@@ -10,6 +10,8 @@ export interface InputsPropsType extends InputValuesType {
 }
 
 export interface SymbolPropsType extends SymbolDataType {
+	index: number;
+	setIndex: React.Dispatch<React.SetStateAction<number>>;
 	setSymbolInfo: React.Dispatch<React.SetStateAction<SymbolInfoType>>;
 }
 

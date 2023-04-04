@@ -8,6 +8,7 @@ export interface SymbolInfoType {
 
 export interface SymbolDataType extends SymbolInfoType {
 	name: string;
+	dailyAcquisitionAmount: number;
 }
 
 export interface InputValuesType {
@@ -19,4 +20,5 @@ export interface ResultType {
 	requiredCount: number;
 	requiredCostIn100M: number;
 	requiredCostIn10K: number;
+	requiredDays: number;
 }
