@@ -6,11 +6,6 @@ export interface SymbolInfoType {
 	additionalCost: number;
 }
 
-export interface SymbolDataType extends SymbolInfoType {
-	name: string;
-	dailyAcquisitionAmount: number;
-}
-
 export interface InputValuesType {
 	symbolLevel: number;
 	symbolCount: number;

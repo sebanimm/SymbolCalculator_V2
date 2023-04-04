@@ -14,3 +14,15 @@ export interface calculateRequiredDaysOptions
 	index: number;
 	weeklyQuest: boolean;
 }
+
+export interface getMaxRequiredCostOptions {
+	baseCost: number;
+	maxSymbolLv: number;
+	additionalCost: number;
+}
+
+export interface getTotalRequiredCostOptions {
+	baseCost: number;
+	symbolLevel: number;
+	additionalCost: number;
+}

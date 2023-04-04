@@ -1,9 +1,5 @@
-import {
-	ResultType,
-	InputValuesType,
-	SymbolDataType,
-	SymbolInfoType,
-} from "interfaces/others";
+import { SymbolDataType } from "interfaces/constants";
+import { ResultType, InputValuesType, SymbolInfoType } from "interfaces/others";
 
 export interface InputsPropsType extends InputValuesType {
 	handleChange: React.ChangeEventHandler<HTMLInputElement>;

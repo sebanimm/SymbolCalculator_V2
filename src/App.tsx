@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { SymbolInfoType, InputValuesType, ResultType } from "interfaces/others";
 import { ARCANE_SYMBOL, DEFAULT, SYMBOL_DATA } from "constants/index";
-import SymbolCalculator from "calculator";
+import {
+	calculateRequiredCost,
+	calculateRequiredSymbolCount,
+	calculateRequiredDays,
+} from "util/index";
 import Symbol from "components/Symbol";
 import Result from "components/Result";
 import Inputs from "components/Inputs";
@@ -42,18 +46,18 @@ const App = () => {
 	};
 
 	const handleButtonClick = () => {
-		const requiredCount = SymbolCalculator.calculateRequiredSymbolCount({
+		const requiredCount = calculateRequiredSymbolCount({
 			symbolType,
 			symbolLevel,
 			symbolCount,
 		});
-		const requiredCost = SymbolCalculator.calculateRequiredCost({
+		const requiredCost = calculateRequiredCost({
 			symbolType,
 			symbolLevel,
 			baseCost,
 			additionalCost,
 		});
-		const requiredDays = SymbolCalculator.calculateRequiredDays({
+		const requiredDays = calculateRequiredDays({
 			index,
 			symbolType,
 			symbolLevel,
