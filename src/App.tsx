@@ -13,8 +13,10 @@ import Inputs from "components/Inputs";
 const App = () => {
 	const [isCalculated, setIsCalculated] = useState<boolean>(false);
 	const [isInRange, setIsInRange] = useState<boolean>(false);
-	const [index, setIndex] = useState<number>(0);
+	const [index, setIndex] = useState<number>(8);
 	const [weeklyQuest, setWeeklyQuest] = useState<boolean>(false);
+	const [extraMap, setExtraMap] = useState<boolean>(false);
+	const [checked, setChecked] = useState<boolean>(false);
 	const [symbolInfo, setSymbolInfo] = useState<SymbolInfoType>({
 		symbolType: DEFAULT,
 		baseCost: 1,
@@ -33,6 +35,7 @@ const App = () => {
 
 	const { symbolType, baseCost, additionalCost } = symbolInfo;
 	const { symbolLevel, symbolCount } = inputValues;
+	const additionalMap = SYMBOL_DATA[index].additionalMap;
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value, maxLength } = e.target;
@@ -43,6 +46,11 @@ const App = () => {
 
 	const handleCheckbox = () => {
 		setWeeklyQuest(!weeklyQuest);
+	};
+
+	const handleCheckbox2 = () => {
+		setExtraMap(!extraMap);
+		setChecked(!checked);
 	};
 
 	const handleButtonClick = () => {
@@ -63,6 +71,7 @@ const App = () => {
 			symbolLevel,
 			symbolCount,
 			weeklyQuest,
+			extraMap,
 		});
 		const requiredCostIn100M = Math.floor(requiredCost / 100_000_000);
 		const requiredCostIn10K = Math.floor((requiredCost % 100_000_000) / 10000);
@@ -93,20 +102,31 @@ const App = () => {
 						<Symbol
 							key={idx}
 							index={idx}
+							checked={checked}
 							{...obj}
 							setIndex={setIndex}
 							setSymbolInfo={setSymbolInfo}
+							setChecked={setChecked}
+							setExtraMap={setExtraMap}
 						/>
 					);
 				})}
 			</div>
 			<Inputs {...inputValues} handleChange={handleChange} />
-			{symbolType === ARCANE_SYMBOL && (
-				<div>
-					주간퀘?
-					<input type="checkbox" onChange={handleCheckbox} />
-				</div>
-			)}
+			<div>
+				{additionalMap && (
+					<>
+						{additionalMap}?
+						<input type="checkbox" checked={checked} onChange={handleCheckbox2} />
+					</>
+				)}
+				{symbolType === ARCANE_SYMBOL && (
+					<>
+						주간퀘?
+						<input type="checkbox" onChange={handleCheckbox} />
+					</>
+				)}
+			</div>
 			<button onClick={handleButtonClick}>계산하기</button>
 			<Result isCalculated={isCalculated} isInRange={isInRange} {...result} />
 		</div>

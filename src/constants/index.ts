@@ -18,14 +18,16 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		symbolType: ARCANE_SYMBOL,
 		baseCost: 3_110_000,
 		additionalCost: 3_960_000,
-		dailyAcquisitionAmount: 18,
+		dailyAcquisitionAmount: 9,
+		additionalMap: "리버스 시티",
 	},
 	{
 		name: "ChewChew",
 		symbolType: ARCANE_SYMBOL,
 		baseCost: 6_220_000,
 		additionalCost: 4_620_000,
-		dailyAcquisitionAmount: 16,
+		dailyAcquisitionAmount: 8,
+		additionalMap: "얌얌",
 	},
 	{
 		name: "Lacheln",
@@ -61,6 +63,7 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		baseCost: 96_900_000,
 		additionalCost: 88_500_000,
 		dailyAcquisitionAmount: 10,
+		additionalMap: "후르니움",
 	},
 	{
 		name: "Arcs",

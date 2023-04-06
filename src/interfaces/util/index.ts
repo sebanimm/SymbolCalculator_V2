@@ -13,6 +13,7 @@ export interface calculateRequiredDaysOptions
 	extends calculateRequiredSymbolCountOptions {
 	index: number;
 	weeklyQuest: boolean;
+	extraMap: boolean;
 }
 
 export interface getMaxRequiredCostOptions {

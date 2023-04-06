@@ -33,15 +33,17 @@ export const calculateRequiredSymbolCount = (
 };
 
 export const calculateRequiredDays = (options: calculateRequiredDaysOptions) => {
-	const { index, symbolType, symbolLevel, symbolCount, weeklyQuest } = options;
+	const { index, symbolType, symbolLevel, symbolCount, weeklyQuest, extraMap } = options;
 	const maxRequiredCount = symbolType === ARCANE_SYMBOL ? 2679 : 4565;
+	const SYMBOL_CONSTANT = symbolType === ARCANE_SYMBOL ? 2 : 1.5;
 	const symbolUpCount = getSymbolUpCount(symbolType, symbolLevel);
 	const dailyAcquisitionAmount = SYMBOL_DATA[index].dailyAcquisitionAmount;
+	const extraSymbol = extraMap
+		? dailyAcquisitionAmount * SYMBOL_CONSTANT
+		: dailyAcquisitionAmount;
 	const requiredCount = maxRequiredCount - (symbolUpCount + symbolCount);
 	const requiredDays = Math.ceil(
-		weeklyQuest
-			? requiredCount / (dailyAcquisitionAmount + 45 / 7)
-			: requiredCount / dailyAcquisitionAmount
+		weeklyQuest ? requiredCount / (extraSymbol + 45 / 7) : requiredCount / extraSymbol
 	);
 
 	return requiredDays;
