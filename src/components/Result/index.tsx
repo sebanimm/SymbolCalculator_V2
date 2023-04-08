@@ -10,8 +10,8 @@ const Result = ({
 }: ResultPropsType) => {
 	return (
 		<div>
-			{isCalculated &&
-				(requiredCount > 0 && isInRange ? (
+			{isCalculated ? (
+				requiredCount > 0 && isInRange ? (
 					<div>
 						심볼은 {requiredCount}개가 더 필요합니다.
 						<br />
@@ -21,7 +21,10 @@ const Result = ({
 					</div>
 				) : (
 					<div>범위를 초과했습니다.</div>
-				))}
+				)
+			) : (
+				<div>심볼을 선택해주세요.</div>
+			)}
 		</div>
 	);
 };

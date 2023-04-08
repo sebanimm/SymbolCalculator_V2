@@ -1,3 +1,4 @@
+import { SymbolType } from "constants/index";
 import { SymbolDataType } from "interfaces/constants";
 import { ResultType, InputValuesType, SymbolInfoType } from "interfaces/others";
 
@@ -17,4 +18,15 @@ export interface SymbolPropsType extends SymbolDataType {
 export interface ResultPropsType extends ResultType {
 	isCalculated: boolean;
 	isInRange: boolean;
+}
+
+export interface CheckboxesPropsType {
+	weeklyQuest: boolean;
+	extraMap: boolean;
+	checked: boolean;
+	additionalMap?: string;
+	symbolType: SymbolType;
+	setWeeklyQuest: React.Dispatch<React.SetStateAction<boolean>>;
+	setExtraMap: React.Dispatch<React.SetStateAction<boolean>>;
+	setChecked: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SymbolInfoType, InputValuesType, ResultType } from "interfaces/others";
-import { ARCANE_SYMBOL, DEFAULT, SYMBOL_DATA } from "constants/index";
+import { DEFAULT, SYMBOL_DATA } from "constants/index";
 import {
 	calculateRequiredCost,
 	calculateRequiredSymbolCount,
@@ -9,6 +9,7 @@ import {
 import Symbol from "components/Symbol";
 import Result from "components/Result";
 import Inputs from "components/Inputs";
+import Checkboxes from "components/Checkboxes";
 
 const App = () => {
 	const [isCalculated, setIsCalculated] = useState<boolean>(false);
@@ -42,15 +43,6 @@ const App = () => {
 		const parsedValue = Number(value);
 		if (value.length > maxLength || isNaN(parsedValue)) return;
 		setInputValues({ ...inputValues, [name]: parsedValue });
-	};
-
-	const handleCheckbox = () => {
-		setWeeklyQuest(!weeklyQuest);
-	};
-
-	const handleCheckbox2 = () => {
-		setExtraMap(!extraMap);
-		setChecked(!checked);
 	};
 
 	const handleButtonClick = () => {
@@ -113,20 +105,16 @@ const App = () => {
 				})}
 			</div>
 			<Inputs {...inputValues} handleChange={handleChange} />
-			<div>
-				{additionalMap && (
-					<>
-						{additionalMap}?
-						<input type="checkbox" checked={checked} onChange={handleCheckbox2} />
-					</>
-				)}
-				{symbolType === ARCANE_SYMBOL && (
-					<>
-						주간퀘?
-						<input type="checkbox" onChange={handleCheckbox} />
-					</>
-				)}
-			</div>
+			<Checkboxes
+				weeklyQuest={weeklyQuest}
+				extraMap={extraMap}
+				checked={checked}
+				additionalMap={additionalMap}
+				symbolType={symbolType}
+				setWeeklyQuest={setWeeklyQuest}
+				setExtraMap={setExtraMap}
+				setChecked={setChecked}
+			/>
 			<button onClick={handleButtonClick}>계산하기</button>
 			<Result isCalculated={isCalculated} isInRange={isInRange} {...result} />
 		</div>
