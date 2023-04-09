@@ -1,4 +1,4 @@
-import { SymbolPropsType } from "interfaces/props";
+import { SymbolPropsType } from "interfaces/components";
 
 const Symbol = ({
 	index,

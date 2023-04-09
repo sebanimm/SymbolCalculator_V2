@@ -1,4 +1,4 @@
-import { InputsPropsType } from "interfaces/props";
+import { InputsPropsType } from "interfaces/components";
 
 const Inputs = ({ symbolLevel, symbolCount, handleChange }: InputsPropsType) => {
 	return (

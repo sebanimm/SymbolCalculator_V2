@@ -1,5 +1,5 @@
 import { ARCANE_SYMBOL } from "constants/index";
-import { CheckboxesPropsType } from "interfaces/props";
+import { CheckboxesPropsType } from "interfaces/components";
 
 const Checkboxes = ({
 	weeklyQuest,

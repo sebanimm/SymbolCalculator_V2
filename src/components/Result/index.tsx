@@ -1,4 +1,4 @@
-import { ResultPropsType } from "interfaces/props";
+import { ResultPropsType } from "interfaces/components";
 
 const Result = ({
 	isCalculated,
