@@ -4,12 +4,12 @@ import { CheckboxesPropsType } from "interfaces/components";
 const Checkboxes = ({
 	weeklyQuest,
 	extraMap,
-	checked,
+	isWeeklyQuestChecked,
 	additionalMap,
 	symbolType,
 	setWeeklyQuest,
 	setExtraMap,
-	setChecked,
+	setIsWeeklyQuestChecked,
 }: CheckboxesPropsType) => {
 	const handleWeeklyQuest = () => {
 		setWeeklyQuest(!weeklyQuest);
@@ -17,7 +17,7 @@ const Checkboxes = ({
 
 	const handleExtraMap = () => {
 		setExtraMap(!extraMap);
-		setChecked(!checked);
+		setIsWeeklyQuestChecked(!isWeeklyQuestChecked);
 	};
 
 	return (
@@ -25,7 +25,11 @@ const Checkboxes = ({
 			{additionalMap && (
 				<>
 					{additionalMap}?
-					<input type="checkbox" checked={checked} onChange={handleExtraMap} />
+					<input
+						type="checkbox"
+						checked={isWeeklyQuestChecked}
+						onChange={handleExtraMap}
+					/>
 				</>
 			)}
 			{symbolType === ARCANE_SYMBOL && (

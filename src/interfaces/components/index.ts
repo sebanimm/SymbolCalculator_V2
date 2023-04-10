@@ -8,10 +8,10 @@ export interface InputsPropsType extends InputValuesType {
 
 export interface SymbolPropsType extends SymbolDataType {
 	index: number;
-	checked: boolean;
+	isWeeklyQuestChecked: boolean;
 	setIndex: React.Dispatch<React.SetStateAction<number>>;
 	setSymbolInfo: React.Dispatch<React.SetStateAction<SymbolInfoType>>;
-	setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+	setIsWeeklyQuestChecked: React.Dispatch<React.SetStateAction<boolean>>;
 	setExtraMap: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -23,10 +23,10 @@ export interface ResultPropsType extends ResultType {
 export interface CheckboxesPropsType {
 	weeklyQuest: boolean;
 	extraMap: boolean;
-	checked: boolean;
+	isWeeklyQuestChecked: boolean;
 	additionalMap?: string;
 	symbolType: SymbolType;
 	setWeeklyQuest: React.Dispatch<React.SetStateAction<boolean>>;
 	setExtraMap: React.Dispatch<React.SetStateAction<boolean>>;
-	setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+	setIsWeeklyQuestChecked: React.Dispatch<React.SetStateAction<boolean>>;
 }

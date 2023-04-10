@@ -5,7 +5,7 @@ import {
 	calculateRequiredCost,
 	calculateRequiredSymbolCount,
 	calculateRequiredDays,
-} from "util/index";
+} from "utils/index";
 import Symbol from "components/Symbol";
 import Result from "components/Result";
 import Inputs from "components/Inputs";
@@ -17,7 +17,7 @@ const App = () => {
 	const [index, setIndex] = useState<number>(8);
 	const [weeklyQuest, setWeeklyQuest] = useState<boolean>(false);
 	const [extraMap, setExtraMap] = useState<boolean>(false);
-	const [checked, setChecked] = useState<boolean>(false);
+	const [isWeeklyQuestChecked, setIsWeeklyQuestChecked] = useState<boolean>(false);
 	const [symbolInfo, setSymbolInfo] = useState<SymbolInfoType>({
 		symbolType: DEFAULT,
 		baseCost: 1,
@@ -89,33 +89,31 @@ const App = () => {
 	return (
 		<div>
 			<div>
-				{SYMBOL_DATA.map((obj, idx) => {
-					return (
-						<Symbol
-							key={idx}
-							index={idx}
-							checked={checked}
-							{...obj}
-							setIndex={setIndex}
-							setSymbolInfo={setSymbolInfo}
-							setChecked={setChecked}
-							setExtraMap={setExtraMap}
-						/>
-					);
-				})}
+				{SYMBOL_DATA.map((obj, idx) => (
+					<Symbol
+						key={obj.name}
+						index={idx}
+						isWeeklyQuestChecked={isWeeklyQuestChecked}
+						{...obj}
+						setIndex={setIndex}
+						setSymbolInfo={setSymbolInfo}
+						setIsWeeklyQuestChecked={setIsWeeklyQuestChecked}
+						setExtraMap={setExtraMap}
+					/>
+				))}
 			</div>
 			<Inputs {...inputValues} handleChange={handleChange} />
 			<Checkboxes
 				weeklyQuest={weeklyQuest}
 				extraMap={extraMap}
-				checked={checked}
+				isWeeklyQuestChecked={isWeeklyQuestChecked}
 				additionalMap={additionalMap}
 				symbolType={symbolType}
 				setWeeklyQuest={setWeeklyQuest}
 				setExtraMap={setExtraMap}
-				setChecked={setChecked}
+				setIsWeeklyQuestChecked={setIsWeeklyQuestChecked}
 			/>
-			<button onClick={handleButtonClick}>계산하기</button>
+			<button onClick={handleButtonClick}>황혐시발롬</button>
 			<Result isCalculated={isCalculated} isInRange={isInRange} {...result} />
 		</div>
 	);

@@ -4,7 +4,7 @@ import {
 	calculateRequiredSymbolCountOptions,
 	getMaxRequiredCostOptions,
 	getTotalRequiredCostOptions,
-} from "interfaces/util";
+} from "interfaces/utils";
 import { ARCANE_SYMBOL, SYMBOL_DATA, SymbolType } from "constants/index";
 
 export const calculateRequiredCost = (options: calculateRequiredCostOptions) => {

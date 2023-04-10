@@ -3,21 +3,21 @@ import { SymbolPropsType } from "interfaces/components";
 const Symbol = ({
 	index,
 	name,
-	checked,
+	isWeeklyQuestChecked,
 	symbolType,
 	baseCost,
 	additionalCost,
 	setIndex,
 	setSymbolInfo,
 	setExtraMap,
-	setChecked,
+	setIsWeeklyQuestChecked,
 }: SymbolPropsType) => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const parsedValue = parseInt(e.target.value);
 		setIndex(parsedValue);
-		setChecked(false);
+		setIsWeeklyQuestChecked(false);
 		setSymbolInfo({ symbolType, baseCost, additionalCost });
-		if (checked) {
+		if (isWeeklyQuestChecked) {
 			setExtraMap(false);
 		}
 	};
