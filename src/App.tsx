@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SymbolInfoType, InputValuesType, ResultType } from "interfaces/others";
-import { DEFAULT, SYMBOL_DATA } from "constants/index";
+import { ARCANE_SYMBOL, AUTHENTIC_SYMBOL, DEFAULT, SYMBOL_DATA } from "constants/index";
 import {
 	calculateRequiredCost,
 	calculateRequiredSymbolCount,
@@ -89,12 +89,26 @@ const App = () => {
 	return (
 		<div>
 			<div>
-				{SYMBOL_DATA.map((obj, idx) => (
+				{SYMBOL_DATA.filter((o) => o.symbolType === ARCANE_SYMBOL).map((o, i) => (
 					<Symbol
-						key={obj.name}
-						index={idx}
+						key={o.name}
+						index={i}
 						isWeeklyQuestChecked={isWeeklyQuestChecked}
-						{...obj}
+						{...o}
+						setIndex={setIndex}
+						setSymbolInfo={setSymbolInfo}
+						setIsWeeklyQuestChecked={setIsWeeklyQuestChecked}
+						setExtraMap={setExtraMap}
+					/>
+				))}
+			</div>
+			<div>
+				{SYMBOL_DATA.filter((o) => o.symbolType === AUTHENTIC_SYMBOL).map((o, i) => (
+					<Symbol
+						key={o.name}
+						index={i}
+						isWeeklyQuestChecked={isWeeklyQuestChecked}
+						{...o}
 						setIndex={setIndex}
 						setSymbolInfo={setSymbolInfo}
 						setIsWeeklyQuestChecked={setIsWeeklyQuestChecked}
