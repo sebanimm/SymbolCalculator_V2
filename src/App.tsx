@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { SymbolInfoType, InputValuesType, ResultType } from "interfaces/others";
-import { ARCANE_SYMBOL, AUTHENTIC_SYMBOL, DEFAULT, SYMBOL_DATA } from "constants/index";
+import { DEFAULT, SYMBOL_DATA } from "constants/index";
 import {
 	calculateRequiredCost,
 	calculateRequiredSymbolCount,
 	calculateRequiredDays,
 } from "utils/index";
-import Symbol from "components/Symbol";
-import Result from "components/Result";
+import GlobalStyle from "styles/globalStyle";
+import SymbolContainer from "components/SymbolContainer";
 import Inputs from "components/Inputs";
 import Checkboxes from "components/Checkboxes";
-import GlobalStyle from "styles/globalStyle";
+import Result from "components/Result";
 
 const App = () => {
 	const [isCalculated, setIsCalculated] = useState<boolean>(false);
@@ -90,34 +90,13 @@ const App = () => {
 	return (
 		<div>
 			<GlobalStyle />
-			<div>
-				{SYMBOL_DATA.filter((o) => o.symbolType === ARCANE_SYMBOL).map((o, i) => (
-					<Symbol
-						key={o.name}
-						index={i}
-						isWeeklyQuestChecked={isWeeklyQuestChecked}
-						{...o}
-						setIndex={setIndex}
-						setSymbolInfo={setSymbolInfo}
-						setIsWeeklyQuestChecked={setIsWeeklyQuestChecked}
-						setExtraMap={setExtraMap}
-					/>
-				))}
-			</div>
-			<div>
-				{SYMBOL_DATA.filter((o) => o.symbolType === AUTHENTIC_SYMBOL).map((o, i) => (
-					<Symbol
-						key={o.name}
-						index={i}
-						isWeeklyQuestChecked={isWeeklyQuestChecked}
-						{...o}
-						setIndex={setIndex}
-						setSymbolInfo={setSymbolInfo}
-						setIsWeeklyQuestChecked={setIsWeeklyQuestChecked}
-						setExtraMap={setExtraMap}
-					/>
-				))}
-			</div>
+			<SymbolContainer
+				isWeeklyQuestChecked={isWeeklyQuestChecked}
+				setIndex={setIndex}
+				setSymbolInfo={setSymbolInfo}
+				setIsWeeklyQuestChecked={setIsWeeklyQuestChecked}
+				setExtraMap={setExtraMap}
+			/>
 			<Inputs {...inputValues} handleChange={handleChange} />
 			<Checkboxes
 				weeklyQuest={weeklyQuest}
@@ -129,7 +108,7 @@ const App = () => {
 				setExtraMap={setExtraMap}
 				setIsWeeklyQuestChecked={setIsWeeklyQuestChecked}
 			/>
-			<button onClick={handleButtonClick}>황혐시발롬</button>
+			<button onClick={handleButtonClick}>계산하기</button>
 			<Result isCalculated={isCalculated} isInRange={isInRange} {...result} />
 		</div>
 	);
