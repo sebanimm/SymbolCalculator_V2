@@ -3,10 +3,10 @@ import { SymbolPropsType } from "interfaces/components";
 const Symbol = ({
 	index,
 	name,
-	isWeeklyQuestChecked,
 	symbolType,
 	baseCost,
 	additionalCost,
+	isWeeklyQuestChecked,
 	setIndex,
 	setSymbolInfo,
 	setExtraMap,
