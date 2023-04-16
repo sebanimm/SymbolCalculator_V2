@@ -10,6 +10,7 @@ import Symbol from "components/Symbol";
 import Result from "components/Result";
 import Inputs from "components/Inputs";
 import Checkboxes from "components/Checkboxes";
+import GlobalStyle from "styles/globalStyle";
 
 const App = () => {
 	const [isCalculated, setIsCalculated] = useState<boolean>(false);
@@ -88,6 +89,7 @@ const App = () => {
 
 	return (
 		<div>
+			<GlobalStyle />
 			<div>
 				{SYMBOL_DATA.filter((o) => o.symbolType === ARCANE_SYMBOL).map((o, i) => (
 					<Symbol
