@@ -11,10 +11,9 @@ const SymbolContainer = ({
 	return (
 		<>
 			<div>
-				{SYMBOL_DATA.filter((o) => o.symbolType === ARCANE_SYMBOL).map((o, i) => (
+				{SYMBOL_DATA.filter((o) => o.symbolType === ARCANE_SYMBOL).map((o) => (
 					<Symbol
 						key={o.name}
-						index={i}
 						{...o}
 						isWeeklyQuestChecked={isWeeklyQuestChecked}
 						setIndex={setIndex}
@@ -25,10 +24,9 @@ const SymbolContainer = ({
 				))}
 			</div>
 			<div>
-				{SYMBOL_DATA.filter((o) => o.symbolType === AUTHENTIC_SYMBOL).map((o, i) => (
+				{SYMBOL_DATA.filter((o) => o.symbolType === AUTHENTIC_SYMBOL).map((o) => (
 					<Symbol
 						key={o.name}
-						index={i}
 						{...o}
 						isWeeklyQuestChecked={isWeeklyQuestChecked}
 						setIndex={setIndex}

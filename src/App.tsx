@@ -15,7 +15,7 @@ import Result from "components/Result";
 const App = () => {
 	const [isCalculated, setIsCalculated] = useState<boolean>(false);
 	const [isInRange, setIsInRange] = useState<boolean>(false);
-	const [index, setIndex] = useState<number>(8);
+	const [index, setIndex] = useState<number>(SYMBOL_DATA.length - 1);
 	const [weeklyQuest, setWeeklyQuest] = useState<boolean>(false);
 	const [extraMap, setExtraMap] = useState<boolean>(false);
 	const [isWeeklyQuestChecked, setIsWeeklyQuestChecked] = useState<boolean>(false);
@@ -86,7 +86,7 @@ const App = () => {
 			setIsInRange(false);
 		}
 	};
-
+	console.log(index);
 	return (
 		<div>
 			<GlobalStyle />

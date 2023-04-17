@@ -14,6 +14,7 @@ export const DEFAULT: SymbolType = SymbolType.Default;
 
 export const SYMBOL_DATA: SymbolDataType[] = [
 	{
+		index: 0,
 		name: "Vanishing",
 		symbolType: ARCANE_SYMBOL,
 		baseCost: 3_110_000,
@@ -22,6 +23,7 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		additionalMap: "리버스 시티",
 	},
 	{
+		index: 1,
 		name: "ChewChew",
 		symbolType: ARCANE_SYMBOL,
 		baseCost: 6_220_000,
@@ -30,6 +32,7 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		additionalMap: "얌얌",
 	},
 	{
+		index: 2,
 		name: "Lacheln",
 		symbolType: ARCANE_SYMBOL,
 		baseCost: 9_330_000,
@@ -37,6 +40,7 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		dailyAcquisitionAmount: 11,
 	},
 	{
+		index: 3,
 		name: "Arcana",
 		symbolType: ARCANE_SYMBOL,
 		baseCost: 11_196_000,
@@ -44,6 +48,7 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		dailyAcquisitionAmount: 9,
 	},
 	{
+		index: 4,
 		name: "Morass",
 		symbolType: ARCANE_SYMBOL,
 		baseCost: 11_196_000,
@@ -51,6 +56,7 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		dailyAcquisitionAmount: 8,
 	},
 	{
+		index: 5,
 		name: "Esfera",
 		symbolType: ARCANE_SYMBOL,
 		baseCost: 11_196_000,
@@ -58,6 +64,7 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		dailyAcquisitionAmount: 8,
 	},
 	{
+		index: 6,
 		name: "Cernium",
 		symbolType: AUTHENTIC_SYMBOL,
 		baseCost: 96_900_000,
@@ -66,6 +73,7 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		additionalMap: "후르니움",
 	},
 	{
+		index: 7,
 		name: "Arcs",
 		symbolType: AUTHENTIC_SYMBOL,
 		baseCost: 106_600_000,
@@ -73,6 +81,7 @@ export const SYMBOL_DATA: SymbolDataType[] = [
 		dailyAcquisitionAmount: 10,
 	},
 	{
+		index: 8,
 		name: "Odium",
 		symbolType: AUTHENTIC_SYMBOL,
 		baseCost: 117_400_000,
