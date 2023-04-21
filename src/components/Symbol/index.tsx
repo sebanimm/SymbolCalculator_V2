@@ -12,6 +12,8 @@ const Symbol = ({
 	setExtraMap,
 	setIsWeeklyQuestChecked,
 }: SymbolPropsType) => {
+	const ImagePath = `/images/${symbolType.split("_", 1)}/${name}.png`;
+
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const parsedValue = parseInt(e.target.value);
 		setIndex(parsedValue);
@@ -25,7 +27,7 @@ const Symbol = ({
 	return (
 		<div>
 			<label htmlFor={name}>
-				<img src={`/images/${symbolType.split("_", 1)}/${name}.png`} alt={name} />
+				<img src={`${ImagePath}`} alt={name} title={name} />
 			</label>
 			<input type="radio" id={name} value={index} name="symbol" onChange={handleChange} />
 		</div>
